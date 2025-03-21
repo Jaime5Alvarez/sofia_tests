@@ -8,7 +8,8 @@ class Setup:
         self.context = context
 
 def setup_playwright(playwright: Playwright, page: Page) -> Setup:
-    browser = playwright.chromium.launch(headless=Constants().HEADLESS_MODE)
+    browser = playwright.chromium.launch(headless= Constants().HEADLESS_MODE)
     context = make_logged_in(page, browser)
 
     return Setup(browser, context)
+

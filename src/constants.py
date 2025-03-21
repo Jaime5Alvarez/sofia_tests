@@ -9,4 +9,4 @@ class Constants:
     def __init__(self):
         self.SOFIA_USER_EMAIL = os.getenv("SOFIA_USER_EMAIL") or ""
         self.SOFIA_USER_PASSWORD = os.getenv("SOFIA_USER_PASSWORD") or ""
-        self.HEADLESS_MODE = os.getenv("HEADLESS_MODE", "true").lower() == "true"
+        self.HEADLESS_MODE = False
