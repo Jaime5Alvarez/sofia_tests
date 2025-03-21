@@ -7,6 +7,6 @@ for var in required_env_vars:
 
 class Constants:
     def __init__(self):
-        self.SOFIA_USER_EMAIL = os.getenv("SOFIA_USER_EMAIL") or ""
-        self.SOFIA_USER_PASSWORD = os.getenv("SOFIA_USER_PASSWORD") or ""
-        self.HEADLESS_MODE = False
+        self.SOFIA_USER_EMAIL: str = os.getenv("SOFIA_USER_EMAIL") or ""
+        self.SOFIA_USER_PASSWORD: str = os.getenv("SOFIA_USER_PASSWORD") or ""
+        self.HEADLESS_MODE: bool = True
