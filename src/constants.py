@@ -6,5 +6,7 @@ for var in required_env_vars:
         raise ValueError(f"Environment variable {var} is not set")
 
 class Constants:
-    SOFIA_USER_EMAIL:str = os.getenv("SOFIA_USER_EMAIL") or ""
-    SOFIA_USER_PASSWORD:str = os.getenv("SOFIA_USER_PASSWORD") or ""
+    def __init__(self):
+        self.SOFIA_USER_EMAIL = os.getenv("SOFIA_USER_EMAIL") or ""
+        self.SOFIA_USER_PASSWORD = os.getenv("SOFIA_USER_PASSWORD") or ""
+        self.HEADLESS_MODE = os.getenv("HEADLESS_MODE", "true").lower() == "true"
