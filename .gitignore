@@ -1,0 +1,9 @@
+# Ignorar todos los directorios __pycache__ en cualquier ubicación
+__pycache__/
+*.py[cod]
+*$py.class
+
+venv
+
+.env
+auth_state.json
