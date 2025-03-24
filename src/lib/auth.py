@@ -15,15 +15,11 @@ def get_auth_file() -> str:
     auth_file = "auth_state.json"
     return auth_file
 
-def make_logged_in(page: Page, browser: Browser) -> BrowserContext:
-    if is_logged_in():
-        context = browser.new_context(storage_state=get_auth_file())
-        return context
-    
+def make_logged_in(browser: Browser) -> tuple[BrowserContext, Page]:
     context = browser.new_context()
+    page = context.new_page()
 
      # Realizar el proceso de inicio de sesión y guardar el estado
-    page = context.new_page()
     page.goto("https://sofia.insudpharma.com/login")
     page.get_by_role("link", name="Login").click()
     page.get_by_role("textbox", name="Enter your email, phone, or").fill(Constants().SOFIA_USER_EMAIL)
@@ -36,4 +32,4 @@ def make_logged_in(page: Page, browser: Browser) -> BrowserContext:
     # Guardar el estado de autenticación para futuras pruebas
     context.storage_state(path=get_auth_file())
 
-    return context
+    return context, page

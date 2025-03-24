@@ -1,13 +1,10 @@
-from playwright.sync_api import Page, Playwright, expect
+from playwright.sync_api import Playwright, expect
 import re
 from src.lib.setup import setup_playwright
-from src.constants import Constants
 
-def test_should_render_sofia_chatbot(playwright: Playwright, page: Page) -> ...:
-    setup = setup_playwright(playwright, page)
+def test_should_render_sofia_chatbot(playwright: Playwright) -> ...:
+    setup = setup_playwright(playwright)
 
-    page = setup.context.new_page()
-    page.goto("https://sofia.insudpharma.com/sofia_chatbot")
-    expect(page).to_have_title(re.compile("Sofia Chatbot"))
-
+    setup.page.goto("https://sofia.insudpharma.com/sofia_chatbot")
+    expect(setup.page).to_have_title(re.compile("Sofia Chatbot"))
 
