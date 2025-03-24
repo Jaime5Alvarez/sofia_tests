@@ -10,7 +10,6 @@ def test_should_translate_document(playwright: Playwright) -> ...:
     setup.page.get_by_role("button", name="Translate a document I want").click()
     
     # Ruta al archivo que quieres subir2
-    file_path = os.path.join(os.path.dirname(__file__), "../test_files/Valores_del_Real_Madrid_2024.pdf")
     
     # Encuentra el div que contiene el texto y luego busca el input file dentro del mismo contenedor
     upload_container = setup.page.get_by_text("Click to select a document(")
@@ -20,7 +19,10 @@ def test_should_translate_document(playwright: Playwright) -> ...:
     setup.page.get_by_text("Spanish (ES)").click()
     setup.page.get_by_role("combobox").filter(has_text="Target language").click()
     setup.page.get_by_text("English (EN-GB)").click()
-       # Busca el input file cercano o relacionado
+
+
+    file_path = os.path.join(os.path.dirname(__file__), "../test_files/Valores_del_Real_Madrid_2024.pdf")
+    # Busca el input file cercano o relacionado
     file_input = setup.page.get_by_test_id("translate-box-input")
     file_input.set_input_files(file_path)
     
