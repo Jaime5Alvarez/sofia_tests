@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(override=True)
 
 required_env_vars = ["SOFIA_USER_EMAIL", "SOFIA_USER_PASSWORD", "SOFIA_DOMAIN"]
 
