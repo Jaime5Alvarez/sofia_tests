@@ -9,7 +9,7 @@ class Setup:
         self.page = page
 
 def setup_playwright(playwright: Playwright) -> Setup:
-    browser = playwright.chromium.launch(headless= False)
+    browser = playwright.chromium.launch(headless=Constants().HEADLESS_MODE)
     if is_logged_in():
         context = browser.new_context(storage_state=get_auth_file())
         page = context.new_page()
