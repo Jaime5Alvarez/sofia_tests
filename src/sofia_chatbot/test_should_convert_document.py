@@ -1,11 +1,12 @@
 from playwright.sync_api import Playwright
+from src.constants import Constants
 from src.lib.setup import setup_playwright
 from src.utils import get_mock_file_path
 
 def test(playwright: Playwright) -> ...:
     setup = setup_playwright(playwright)
 
-    setup.page.goto("https://sofia.insudpharma.com/sofia_chatbot")
+    setup.page.goto(f"{Constants().DOMAIN}/sofia_chatbot")
 
     setup.page.get_by_role("button", name="I want to convert a document").click()
     setup.page.get_by_role("combobox").filter(has_text="Input Format").click()

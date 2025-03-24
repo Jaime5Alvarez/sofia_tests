@@ -1,11 +1,12 @@
 from playwright.sync_api import Playwright, expect
+from src.constants import Constants
 from src.lib.setup import setup_playwright
 from src.utils import get_mock_file_path
 
 def test_should_translate_document(playwright: Playwright) -> ...:
     setup = setup_playwright(playwright)
 
-    setup.page.goto("https://sofia.insudpharma.com/sofia_chatbot")
+    setup.page.goto(f"{Constants().DOMAIN}/sofia_chatbot")
 
     setup.page.get_by_role("button", name="Translate a document I want").click()
     

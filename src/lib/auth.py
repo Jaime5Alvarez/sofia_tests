@@ -20,7 +20,7 @@ def make_logged_in(browser: Browser) -> tuple[BrowserContext, Page]:
     page = context.new_page()
 
      # Realizar el proceso de inicio de sesión y guardar el estado
-    page.goto("https://sofia.insudpharma.com/login")
+    page.goto(f"{Constants().DOMAIN}/login")
     page.get_by_role("link", name="Login").click()
     page.get_by_role("textbox", name="Enter your email, phone, or").fill(Constants().SOFIA_USER_EMAIL)
     page.get_by_role("button", name="Next").click()

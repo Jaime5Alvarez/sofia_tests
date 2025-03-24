@@ -1,5 +1,6 @@
 from playwright.sync_api import Playwright, expect
 import re
+from src.constants import Constants
 from src.lib.setup import setup_playwright
 
 from src.utils import get_mock_file_path
@@ -7,7 +8,7 @@ from src.utils import get_mock_file_path
 def test_should_run_metadata(playwright: Playwright) -> ...:
     setup = setup_playwright(playwright)
 
-    setup.page.goto("https://sofia.insudpharma.com/apps/metadata")
+    setup.page.goto(f"{Constants().DOMAIN}/apps/metadata")
     setup.page.get_by_role("textbox", name="Field name to extract").click()
     setup.page.get_by_role("textbox", name="Field name to extract").fill("name")
     setup.page.get_by_role("textbox", name="Field description to extract").click()
