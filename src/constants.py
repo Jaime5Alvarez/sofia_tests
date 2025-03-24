@@ -13,5 +13,5 @@ class Constants:
     def __init__(self):
         self.SOFIA_USER_EMAIL: str = os.getenv("SOFIA_USER_EMAIL") or ""
         self.SOFIA_USER_PASSWORD: str = os.getenv("SOFIA_USER_PASSWORD") or ""
-        self.HEADLESS_MODE: bool = not (os.getenv("HEADLESS_MODE") == "false")
+        self.HEADLESS_MODE: bool = os.getenv("HEADLESS_MODE") != "false"
         self.DOMAIN: str = os.getenv("SOFIA_DOMAIN") or ""
