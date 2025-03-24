@@ -1,7 +1,8 @@
 from playwright.sync_api import Playwright, expect
 import re
 from src.lib.setup import setup_playwright
-import os
+
+from src.utils import get_mock_file_path
 
 def test_should_run_metadata(playwright: Playwright) -> ...:
     setup = setup_playwright(playwright)
@@ -24,10 +25,8 @@ def test_should_run_metadata(playwright: Playwright) -> ...:
     setup.page.locator("div").filter(has_text=re.compile(r"^TextMultiple values$")).get_by_placeholder("Field description to extract").click()
     setup.page.locator("div").filter(has_text=re.compile(r"^TextMultiple values$")).get_by_placeholder("Field description to extract").fill("abstract of this document")
 
-    file_path = os.path.join(os.path.dirname(__file__), "../test_files/Valores_del_Real_Madrid_2024.pdf")
-
     file_input = setup.page.get_by_test_id("file-metadata-input")
-    file_input.set_input_files(file_path)
+    file_input.set_input_files(get_mock_file_path())
 
     with setup.page.expect_response(lambda response: response.status == 200 and "bg-metadata/proxy" in response.url) as response_info:
         setup.page.get_by_role("button", name="Run all docs").click()
